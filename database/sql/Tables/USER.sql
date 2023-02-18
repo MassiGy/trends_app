@@ -1,0 +1,7 @@
+
+CREATE TABLE IF NOT EXISTS USER(
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_nickname VARCHAR(64) NOT NULL UNIQUE,
+    user_email VARCHAR(64) NOT NULL UNIQUE,
+    user_password VARCHAR(64) NOT NULL
+);

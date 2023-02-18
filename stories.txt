@@ -1,0 +1,41 @@
+/ BRAINSTORMING
+
+FOR USERS:
+
+as a user, I want to operate full CRUD on posts,
+as a user, I want to up/downvote posts,
+as a user, I want to log/sign{in|out} on the web app
+
+
+FOR POSTS: 
+
+as a post, I need to have a title, content, upvotesCount, downvoteCount
+as a post, I can have many comments
+
+FOR COMMENTS:
+
+as a comment, I need to have a content and an author and a host post
+
+
+
+/ RELATIONSHIPS
+
+as a user, I can have multiple posts
+as a post, I can have only one author
+as a post, I can have multiple comments
+as a comment, I can belong to only one post and one author
+
+
+/ CARDINALITIES
+
+USER<1,N>POST
+POST<1,N>COMMENT
+USER<1,N>COMMENT
+
+
+/ PRIMARY KEYS, FOREIGN KEYS SETUP:
+
+POST table will have a FOREIGN KEY refrencing the PRIMARY KEY of the USER table.
+COMMENT table will have a FOREIGN KEY refrencing the PRIMARY KEY of the USER table
+COMMENT table will have a FOREIGN KEY refrencing the PRIMARY KEY of the POST table
+
