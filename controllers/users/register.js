@@ -1,7 +1,7 @@
 const { db_handler } = require("../../database/config/mysql.conf");
 
 
-module.exports.register = async (req, res) => {
+module.exports.register =  (req, res) => {
 
     const { user_nickname, user_email, user_password } = req.body;
 
@@ -11,12 +11,12 @@ module.exports.register = async (req, res) => {
         VALUES
             ('${user_nickname}', '${user_email}', '${user_password}')`;
 
-    await db_handler.query(sql, (err) => {
+    db_handler.query(sql, (err) => {
         if (err) {
             console.log("Error payload is set to : %s\n", err.message);
             return;
         }
 
-        return res.send("OK.")
+        return res.send("OK.");
     });
 }
