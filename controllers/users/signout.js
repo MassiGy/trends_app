@@ -12,26 +12,21 @@ module.exports.signout = (req, res) => {
 
 
     db_handler.query(sql, (err, results) => {
-        if (err) {
-            console.log("Error payload is set to : %s\n", err.message);
-            return;
-        }
+        if (err) return res.send("Error payload is set to : %s\n", err.message);
 
-        if (!results || results.length != 1) {
-            return res.send("No user was found with the given id.");
-        }
+
+        if (!results || results.length != 1) return res.send("No user was found with the given id.");
 
         let safetoDelete = results[0].user_nickname == user_nickname && results[0].user_email == user_email && results[0].user_password == user_password;
         if (!safetoDelete) return res.send("No user was found with the given data.");
 
-        sql = `DELETE FROM USER WHERE user_id = ${user_id}; `;
+        sql = `
+            DELETE FROM POST WHERE author_id = ${user_id};
+            DELETE FROM USER WHERE user_id = ${user_id}; `;
 
 
         db_handler.query(sql, (err) => {
-            if (err) {
-                console.log("Error payload is set to : %s\n", err.message);
-                return;
-            }
+            if (err) return res.send("Error payload is set to : %s\n", err.message);
             return res.send("OK.");
         })
 
