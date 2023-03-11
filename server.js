@@ -1,6 +1,8 @@
 /** IMPORT OUR DEPENDENCIES */
 const express = require("express");
 const app = express();
+const path=require('path');
+
 const dotenv = require("dotenv");
 
 /** IMPORT OUR ENVS */
@@ -25,6 +27,11 @@ const { db_handler } = require("./database/config/mysql.conf");
 /** SETUP OUR EXPRESS APP SETTINGS */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname,'views'));
+
+
 
 
 /** IMPORT & USE OUR ROUTES */
