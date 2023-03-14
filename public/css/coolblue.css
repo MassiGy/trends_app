@@ -482,9 +482,11 @@ header nav ul li a:hover,
 header nav ul li a:active {
 	border: none;
 	color: #D67630;
+    text-decoration: none;
 }
 header nav ul li#current a {
 	color: #D67630;
+
 }
 header nav ul li#current span {
     position: absolute;
@@ -510,6 +512,7 @@ header div.subscribe {
     padding-left: 28px;
     right: 68px;
     top: 18px;
+   
 }
 header div.subscribe a {
     padding-right: 3px;
@@ -518,7 +521,13 @@ header div.subscribe a {
 }
 header div.subscribe a:hover,
 header div.subscribe a:active {
-    color: #D67630;
+    color:#D67630;
+}
+
+header div.subscribe a{
+    text-decoration: none;
+    font-size: medium;
+    color:#BEBEBE;
 }
 
 /* Quick Search */
@@ -1108,7 +1117,8 @@ ul.archive li .post-details a:hover {
     -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 #FF7242;
 }
 
-/**/
+/* POST COMMENTS */
+
 body { padding-top:30px; }
 .widget .panel-body { padding:0px; }
 .widget .list-group { margin-bottom: 0; }
@@ -1120,3 +1130,18 @@ body { padding-top:30px; }
 .widget .action { margin-top:5px; }
 .widget .comment-text { font-size: 12px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
+
+.mainDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #d2e2e8;
+
+}
+
+/* REGISTRATION FORM */
+
+/* #signUp{
+    margin-left: 170px;
+} */
