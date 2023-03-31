@@ -39,6 +39,16 @@
 
  <%- include('header.ejs') %>
 
+ <% console.log('flashMessages :>> ', flashMessages);  %>
+
+ <% if(flashMessages && flashMessages.success){ %>
+   <%= flashMessages.success %>
+ <% } %>
+
+ <% if(flashMessages && flashMessages.error){ %>
+   <%= flashMessages.error %>
+ <% } %>
+
   <!-- content-wrap -->
   <div id="content-wrap">
 
@@ -110,6 +120,8 @@
             Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
             posuere nunc justo tempus leo suspendisse bibendum. <a href="index.html">Learn more...</a>
           </p>
+   
+  
 
         </div>
 
