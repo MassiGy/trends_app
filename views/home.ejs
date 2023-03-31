@@ -22,338 +22,353 @@
     <![endif]-->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css">
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-  <script src="js/jquery-1.6.1.min.js"></script>
+  <script src="/js/jquery-1.6.1.min.js"></script>
 
 
   <script src="/js/scrollToTop.js"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 </head>
 
 <body id="top">
 
- <%- include ('partials/header.ejs') %>
+  <%- include ('partials/header.ejs') %>
+    
 
- <% console.log('flashMessages :>> ', flashMessages);  %>
 
- <% if(flashMessages && flashMessages.success){ %>
-  <h1>
-    <%= flashMessages.success %>
-  </h1>
- <% } %>
+      <!-- content-wrap -->
+      <div id="content-wrap">
+        <%- include('partials/alerts.ejs') %>
 
- <% if(flashMessages && flashMessages.error){ %>
-  <h1>
-    <%= flashMessages.error %>
-  </h1>
+        <!-- content -->
+        <div id="content" class="clearfix">
 
- <% } %>
+          <!-- main -->
+          <div id="main">
 
-  <!-- content-wrap -->
-  <div id="content-wrap">
-
-    <!-- content -->
-    <div id="content" class="clearfix">
-
-      <!-- main -->
-      <div id="main">
-
-        <% results.forEach(post => { %>
+            <% results.forEach(post=> { %>
 
 
 
-        <article class="post">
+              <article class="post">
 
-          <div class="primary">
+                <div class="primary">
 
-            <h2><a href="#"> <%= post.post_title %></a></h2>
+                  <h2><a href="#">
+                      <%= post.post_title %>
+                    </a></h2>
 
-            <p class="post-info"><span>filed under</span> <a href="index.html">templates</a>, <a href="index.html">internet</a></p>
+                  <p class="post-info"><span>filed under</span> <a href="index.html">templates</a>, <a
+                      href="index.html">internet</a></p>
 
-            <div class="image-section">
-              <img src="/images/img-post.jpg" alt="image post" height="206" width="498" />
+                  <div class="image-section">
+                    <img src="/images/img-post.jpg" alt="image post" height="206" width="498" />
+                  </div>
+
+                  <p>
+                    <%= post.post_body%>
+                  </p>
+
+                  <p><a class="more" href="/posts/<%=post.post_id %>/comments">Show comments &raquo;</a></p>
+
+
+                </div>
+
+                <aside>
+
+                  <p class="dateinfo">JAN<span>31</span></p>
+
+                  <div class="post-meta">
+                    <h4>Post Info</h4>
+                    <ul>
+                      <li class="user"><a href="#">
+                          <%= post.user_nickname%>
+                        </a></li>
+                      <li class="time"><a href="#">
+                          <%= post.createdAt %>
+                        </a></li>
+                      <li class="comment"><a href="#">2 Comments</a></li>
+                      <li class="permalink"><a href="#">
+                          <%= post.post_votes %> Votes
+                        </a></li>
+
+                    </ul>
+                  </div>
+
+                </aside>
+
+              </article>
+
+              <% }) %>
+
+
+
+                <!-- /main -->
+          </div>
+
+          <!-- sidebar -->
+          <div id="sidebar">
+
+            <div class="about-me">
+
+              <h3>About Us</h3>
+
+              <p>
+                <a href="index.html"><img src="/images/gravatar.jpg" width="42" height="42" alt="firefox"
+                    class="align-left" /></a>
+                Lorem ipsum dolor sit, consectetuer adipiscing. Donec libero. Suspendisse bibendum.
+                Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
+                posuere nunc justo tempus leo suspendisse bibendum. <a href="index.html">Learn more...</a>
+              </p>
+
+
+
             </div>
 
-            <p> <%= post.post_body%></p>
+            <div class="sidemenu">
 
-            <p><a class="more" href="/posts/<%=post.post_id %>/comments">Show comments &raquo;</a></p>
+              <h3>Sidebar Menu</h3>
+              <ul>
+                <li id="current"><a href="/">Home</a><span></span></li>
+                <li><a href="style.html">Popular</a><span></span></li>
+                <li><a href="blog.html">Top</a><span></span></li>
+                <li><a href="index.html">Support</a><span></span></li>
+                <li><a href="index.html">About us</a><span></span></li>
+              </ul>
 
+            </div>
+
+
+
+            <div class="sidemenu popular">
+
+              <h3>Most Popular</h3>
+              <ul>
+                <li><a href="index.html">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                    <span>Posted on December 22, 2010</span></a>
+                </li>
+                <li><a href="index.html">Cras fringilla magna. Phasellus suscipit.
+                    <span>Posted on December 20, 2010</span></a>
+                </li>
+                <li><a href="index.html">Morbi tincidunt, orci ac convallis aliquam.
+                    <span>Posted on December 15, 2010</span></a>
+                </li>
+                <li><a href="index.html">Ipsum dolor sit amet, consectetuer adipiscing elit.
+                    <span>Posted on December 14, 2010</span></a>
+                </li>
+                <li><a href="index.html">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem
+                    <span>Posted on December 12, 2010</span></a>
+                </li>
+              </ul>
+
+            </div>
+
+            <!-- /sidebar -->
+          </div>
+
+          <!-- content -->
+        </div>
+
+        <!-- /content-out -->
+      </div>
+
+      <!-- extra -->
+      <div id="extra-wrap">
+        <div id="extra" class="clearfix">
+
+          <div id="gallery" class="clearfix">
+
+            <h3>Flickr Photos </h3>
+
+            <p class="thumbs">
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+              <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+            </p>
 
           </div>
 
-          <aside>
+          <div class="col first">
 
-            <p class="dateinfo">JAN<span>31</span></p>
+            <h3>Contact Info</h3>
 
-            <div class="post-meta">
-              <h4>Post Info</h4>
+            <p>
+              <strong>Phone: </strong>+1234567<br />
+              <strong>Fax: </strong>+123456789
+            </p>
+
+            <p><strong>Address: </strong>123 Put Your Address Here</p>
+            <p><strong>E-mail: </strong>me@coolblue.com</p>
+            <p>Want more info - go to our <a href="#">contact page</a></p>
+
+            <h3>Updates</h3>
+
+            <ul class="subscribe-stuff">
+              <li><a title="RSS" href="index.html" rel="nofollow">
+                  <img alt="RSS" title="RSS" src="images/social_rss.png" /></a>
+              </li>
+              <li><a title="Facebook" href="index.html" rel="nofollow">
+                  <img alt="Facebook" title="Facebook" src="images/social_facebook.png" /></a>
+              </li>
+              <li><a title="Twitter" href="index.html" rel="nofollow">
+                  <img alt="Twitter" title="Twitter" src="images/social_twitter.png" /></a>
+              </li>
+              <li><a title="E-mail this story to a friend!" href="index.html" rel="nofollow">
+                  <img alt="E-mail this story to a friend!" title="E-mail this story to a friend!"
+                    src="images/social_email.png" /></a>
+              </li>
+            </ul>
+
+            <p>Stay up to date. Subscribe via
+              <a href="index">RSS</a>, <a href="index">Facebook</a>,
+              <a href="index">Twitter</a> or <a href="index">Email</a>
+            </p>
+
+          </div>
+
+          <div class="col">
+
+            <h3>Site Links</h3>
+
+            <div class="footer-list">
               <ul>
-                <li class="user"><a href="#"><%= post.user_nickname%></a></li>
-                <li class="time"><a href="#"><%= post.createdAt %> </a></li>
-                <li class="comment"><a href="#">2 Comments</a></li>
-                <li class="permalink"><a href="#"> <%= post.post_votes %> Votes</a></li>
-               
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Style Demo</a></li>
+                <li><a href="index.html">Blog</a></li>
+                <li><a href="index.html">Archive</a></li>
+                <li><a href="index.html">About</a></li>
+                <li><a href="index.html">Template Info</a></li>
+                <li><a href="index.html">Site Map</a></li>
               </ul>
             </div>
 
-          </aside>
+            <h3>Friends</h3>
 
-        </article>
+            <div class="footer-list">
+              <ul>
+                <li><a href="index.html">consequat molestie</a></li>
+                <li><a href="index.html">sem justo</a></li>
+                <li><a href="index.html">semper</a></li>
+                <li><a href="index.html">magna sed purus</a></li>
+                <li><a href="index.html">tincidunt</a></li>
+                <li><a href="index.html">consequat molestie</a></li>
+                <li><a href="index.html">magna sed purus</a></li>
+              </ul>
+            </div>
 
-        <% }) %>
+          </div>
 
+          <div class="col">
 
+            <h3>Credits</h3>
 
-        <!-- /main -->
+            <div class="footer-list">
+              <ul>
+                <li><a href="http://jasonlarose.com/blog/110-free-classy-social-media-icons">
+                    110 Free Classy Social Media Icons by Jason LaRose
+                  </a>
+                </li>
+                <li><a href="http://wefunction.com/2009/05/free-social-icons-app-icons/">
+                    Free Social Media Icons by WeFunction
+                  </a>
+                </li>
+                <li><a href="http://iconsweets2.com/">
+                    Free Icons by Yummygum
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <h3>Recent Comments</h3>
+
+            <div class="recent-comments">
+              <ul>
+                <li><a href="index.html" title="Comment on title">Whoa! This one is really cool...</a><br /> &#45;
+                  <cite>Erwin</cite>
+                </li>
+                <li><a href="index.html" title="Comment on title">Wow. This theme is really awesome...</a><br /> &#45;
+                  <cite>John Doe</cite>
+                </li>
+                <li><a href="index.html" title="Comment on title">Type your comment here...</a><br />&#45;
+                  <cite>Naruto</cite>
+                </li>
+                <li><a href="index.html" title="Comment on title">And don't forget this theme is free...</a><br /> &#45;
+                  <cite>Shikamaru</cite>
+                </li>
+                <li><a href="index.html" title="Comment on title">Just a simple reply test. Thanks...</a><br /> &#45;
+                  <cite>ABCD</cite>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="col">
+
+            <h3>Archives</h3>
+
+            <div class="footer-list">
+              <ul>
+                <li><a href="index.html">January 2010</a></li>
+                <li><a href="index.html">December 2009</a></li>
+                <li><a href="index.html">November 2009</a></li>
+                <li><a href="index.html">October 2009</a></li>
+                <li><a href="index.html">September 2009</a></li>
+              </ul>
+            </div>
+
+            <h3>Recent Bookmarks</h3>
+
+            <div class="footer-list">
+              <ul>
+                <li><a href="index.html">5 Must Have Sans Serif Fonts for Web Designers</a></li>
+                <li><a href="index.html">The Basics of CSS3</a></li>
+                <li><a href="index.html">10 Simple Tips for Launching a Website</a></li>
+                <li><a href="index.html">24 ways: Working With RGBA Colour</a></li>
+                <li><a href="index.html">30 Blog Designs with Killer Typography</a></li>
+                <li><a href="index.html">The Principles of Great Design</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- /extra -->
+        </div>
       </div>
 
-      <!-- sidebar -->
-      <div id="sidebar">
+      <!-- footer -->
+      <footer>
 
-        <div class="about-me">
-
-          <h3>About Us</h3>
-
-          <p>
-            <a href="index.html"><img src="/images/gravatar.jpg" width="42" height="42" alt="firefox" class="align-left" /></a>
-            Lorem ipsum dolor sit, consectetuer adipiscing. Donec libero. Suspendisse bibendum.
-            Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
-            posuere nunc justo tempus leo suspendisse bibendum. <a href="index.html">Learn more...</a>
-          </p>
-   
-  
-
-        </div>
-
-        <div class="sidemenu">
-
-          <h3>Sidebar Menu</h3>
-          <ul>
-            <li id="current"><a href="/">Home</a><span></span></li>
-            <li><a href="style.html">Popular</a><span></span></li>
-            <li><a href="blog.html">Top</a><span></span></li>
-            <li><a href="index.html">Support</a><span></span></li>
-            <li><a href="index.html">About us</a><span></span></li>
-          </ul>
-
-        </div>
-
-       
-
-        <div class="sidemenu popular">
-
-          <h3>Most Popular</h3>
-          <ul>
-            <li><a href="index.html">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                <span>Posted on December 22, 2010</span></a>
-            </li>
-            <li><a href="index.html">Cras fringilla magna. Phasellus suscipit.
-                <span>Posted on December 20, 2010</span></a>
-            </li>
-            <li><a href="index.html">Morbi tincidunt, orci ac convallis aliquam.
-                <span>Posted on December 15, 2010</span></a>
-            </li>
-            <li><a href="index.html">Ipsum dolor sit amet, consectetuer adipiscing elit.
-                <span>Posted on December 14, 2010</span></a>
-            </li>
-            <li><a href="index.html">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem
-                <span>Posted on December 12, 2010</span></a>
-            </li>
-          </ul>
-
-        </div>
-
-        <!-- /sidebar -->
-      </div>
-
-      <!-- content -->
-    </div>
-
-    <!-- /content-out -->
-  </div>
-
-  <!-- extra -->
-  <div id="extra-wrap">
-    <div id="extra" class="clearfix">
-
-      <div id="gallery" class="clearfix">
-
-        <h3>Flickr Photos </h3>
-
-        <p class="thumbs">
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
-          <a href="index.html"><img src="images/thumb.png" width="42" height="43" alt="thumbnail" /></a>
+        <p class="footer-left">
+          &copy; 2011 Copyright Info &nbsp; &nbsp; &nbsp;
+          Design by <a href="http://www.styleshout.com/">styleshout</a>
         </p>
 
-      </div>
-
-      <div class="col first">
-
-        <h3>Contact Info</h3>
-
-        <p>
-          <strong>Phone: </strong>+1234567<br />
-          <strong>Fax: </strong>+123456789
+        <p class="footer-right">
+          <a href="index.html">Home</a> |
+          <a href="index.html">Sitemap</a> |
+          <a href="index.html">RSS Feed</a> |
+          <a href="#top" class="back-to-top">Back to Top</a>
         </p>
 
-        <p><strong>Address: </strong>123 Put Your Address Here</p>
-        <p><strong>E-mail: </strong>me@coolblue.com</p>
-        <p>Want more info - go to our <a href="#">contact page</a></p>
-
-        <h3>Updates</h3>
-
-        <ul class="subscribe-stuff">
-          <li><a title="RSS" href="index.html" rel="nofollow">
-              <img alt="RSS" title="RSS" src="images/social_rss.png" /></a>
-          </li>
-          <li><a title="Facebook" href="index.html" rel="nofollow">
-              <img alt="Facebook" title="Facebook" src="images/social_facebook.png" /></a>
-          </li>
-          <li><a title="Twitter" href="index.html" rel="nofollow">
-              <img alt="Twitter" title="Twitter" src="images/social_twitter.png" /></a>
-          </li>
-          <li><a title="E-mail this story to a friend!" href="index.html" rel="nofollow">
-              <img alt="E-mail this story to a friend!" title="E-mail this story to a friend!" src="images/social_email.png" /></a>
-          </li>
-        </ul>
-
-        <p>Stay up to date. Subscribe via
-          <a href="index">RSS</a>, <a href="index">Facebook</a>,
-          <a href="index">Twitter</a> or <a href="index">Email</a>
-        </p>
-
-      </div>
-
-      <div class="col">
-
-        <h3>Site Links</h3>
-
-        <div class="footer-list">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">Style Demo</a></li>
-            <li><a href="index.html">Blog</a></li>
-            <li><a href="index.html">Archive</a></li>
-            <li><a href="index.html">About</a></li>
-            <li><a href="index.html">Template Info</a></li>
-            <li><a href="index.html">Site Map</a></li>
-          </ul>
-        </div>
-
-        <h3>Friends</h3>
-
-        <div class="footer-list">
-          <ul>
-            <li><a href="index.html">consequat molestie</a></li>
-            <li><a href="index.html">sem justo</a></li>
-            <li><a href="index.html">semper</a></li>
-            <li><a href="index.html">magna sed purus</a></li>
-            <li><a href="index.html">tincidunt</a></li>
-            <li><a href="index.html">consequat molestie</a></li>
-            <li><a href="index.html">magna sed purus</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="col">
-
-        <h3>Credits</h3>
-
-        <div class="footer-list">
-          <ul>
-            <li><a href="http://jasonlarose.com/blog/110-free-classy-social-media-icons">
-                110 Free Classy Social Media Icons by Jason LaRose
-              </a>
-            </li>
-            <li><a href="http://wefunction.com/2009/05/free-social-icons-app-icons/">
-                Free Social Media Icons by WeFunction
-              </a>
-            </li>
-            <li><a href="http://iconsweets2.com/">
-                Free Icons by Yummygum
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <h3>Recent Comments</h3>
-
-        <div class="recent-comments">
-          <ul>
-            <li><a href="index.html" title="Comment on title">Whoa! This one is really cool...</a><br /> &#45; <cite>Erwin</cite></li>
-            <li><a href="index.html" title="Comment on title">Wow. This theme is really awesome...</a><br /> &#45; <cite>John Doe</cite></li>
-            <li><a href="index.html" title="Comment on title">Type your comment here...</a><br />&#45; <cite>Naruto</cite></li>
-            <li><a href="index.html" title="Comment on title">And don't forget this theme is free...</a><br /> &#45; <cite>Shikamaru</cite></li>
-            <li><a href="index.html" title="Comment on title">Just a simple reply test. Thanks...</a><br /> &#45; <cite>ABCD</cite></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="col">
-
-        <h3>Archives</h3>
-
-        <div class="footer-list">
-          <ul>
-            <li><a href="index.html">January 2010</a></li>
-            <li><a href="index.html">December 2009</a></li>
-            <li><a href="index.html">November 2009</a></li>
-            <li><a href="index.html">October 2009</a></li>
-            <li><a href="index.html">September 2009</a></li>
-          </ul>
-        </div>
-
-        <h3>Recent Bookmarks</h3>
-
-        <div class="footer-list">
-          <ul>
-            <li><a href="index.html">5 Must Have Sans Serif Fonts for Web Designers</a></li>
-            <li><a href="index.html">The Basics of CSS3</a></li>
-            <li><a href="index.html">10 Simple Tips for Launching a Website</a></li>
-            <li><a href="index.html">24 ways: Working With RGBA Colour</a></li>
-            <li><a href="index.html">30 Blog Designs with Killer Typography</a></li>
-            <li><a href="index.html">The Principles of Great Design</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- /extra -->
-    </div>
-  </div>
-
-  <!-- footer -->
-  <footer>
-
-    <p class="footer-left">
-      &copy; 2011 Copyright Info &nbsp; &nbsp; &nbsp;
-      Design by <a href="http://www.styleshout.com/">styleshout</a>
-    </p>
-
-    <p class="footer-right">
-      <a href="index.html">Home</a> |
-      <a href="index.html">Sitemap</a> |
-      <a href="index.html">RSS Feed</a> |
-      <a href="#top" class="back-to-top">Back to Top</a>
-    </p>
-
-    <!-- /footer -->
-  </footer>
+        <!-- /footer -->
+      </footer>
 
 </body>
 

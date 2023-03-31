@@ -7,7 +7,7 @@ module.exports.register = (req, res) => {
     
     if (!user_nickname.length || !user_email.length || !user_password.length){
         req.flash("error","Credentials can not be blank.");
-        return res.redirect("/register");
+        return res.redirect("/signUp");
     }
 
     let sql = `
