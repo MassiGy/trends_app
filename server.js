@@ -4,6 +4,7 @@ const app = express();
 const path = require('path');
 const sessions = require("express-session");
 const flash = require("connect-flash");
+const bcrypt=require('bcryptjs');
 
 const dotenv = require("dotenv");
 
@@ -40,7 +41,14 @@ const sessionOption = {
     name: String(process.env.SESSION_NAME),
     secret: String(process.env.SESSION_SECRET),
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie:{
+        maxAge:4*24*60*60,
+        secure:false,
+        httpOnly: false,
+        path:"/"
+    }
+
 }
 
 app.use(sessions(sessionOption));
@@ -61,6 +69,7 @@ app.use((req, res, next) => {
 
     console.log('flashMessages :>> ', res.locals.flashMessages);
     console.log('res.locals :>> ', res.locals);
+    console.log("I am user_id ===",req.session.user_id);
 
 
     next();
