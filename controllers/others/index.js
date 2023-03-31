@@ -1,2 +1,3 @@
 module.exports.renderHome=require('./renderHome').renderHome;
-module.exports.renderRegistration=require('./renderRegistration').renderRegistration;
+module.exports.renderSignUp=require('./renderSignUp.js').renderSignUp;
+module.exports.renderLogIn=require('./renderLogIn.js').renderLogIn;
