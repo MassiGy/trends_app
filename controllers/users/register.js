@@ -1,9 +1,14 @@
 const { db_handler } = require("../../database/config/mysql.conf");
 
 
-module.exports.register =  (req, res) => {
+module.exports.register = (req, res) => {
 
     const { user_nickname, user_email, user_password } = req.body;
+    
+    if (!user_nickname.length || !user_email.length || !user_password.length){
+        req.flash("error","Credentials can not be blank.");
+        return res.redirect("/register");
+    }
 
     let sql = `
         INSERT INTO USER
@@ -17,7 +22,7 @@ module.exports.register =  (req, res) => {
             return;
         }
 
-      
-        return res.send("OK.");
+        req.flash("success", "Successfuly signed up.");
+        return res.redirect("/home");
     });
 }
