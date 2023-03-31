@@ -42,11 +42,16 @@
  <% console.log('flashMessages :>> ', flashMessages);  %>
 
  <% if(flashMessages && flashMessages.success){ %>
-   <%= flashMessages.success %>
+  <h1>
+    <%= flashMessages.success %>
+  </h1>
  <% } %>
 
  <% if(flashMessages && flashMessages.error){ %>
-   <%= flashMessages.error %>
+  <h1>
+    <%= flashMessages.error %>
+  </h1>
+
  <% } %>
 
   <!-- content-wrap -->

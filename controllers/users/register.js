@@ -19,7 +19,7 @@ module.exports.register = (req, res) => {
     db_handler.query(sql, (err) => {
         if (err) {
             console.log("Error payload is set to : %s\n", err.message);
-            return;
+            res.redirect("/");
         }
 
         req.flash("success", "Successfuly signed up.");
