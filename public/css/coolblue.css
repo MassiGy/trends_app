@@ -512,6 +512,10 @@ header div.subscribe {
     padding-left: 28px;
     right: 68px;
     top: 18px;
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content:space-between;
+
    
 }
 header div.subscribe a {
@@ -1142,6 +1146,6 @@ body { padding-top:30px; }
 
 /* REGISTRATION FORM */
 
-/* #signUp{
+#signUp{
     margin-left: 170px;
-} */
+}

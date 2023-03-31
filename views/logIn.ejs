@@ -13,8 +13,9 @@
  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  
 
-  <title>Register</title>
+  <title>Log In</title>
 
 
 </head>
@@ -41,6 +42,7 @@
             hsl(218, 41%, 20%) 75%,
             hsl(218, 41%, 19%) 80%,
             transparent 100%);
+            
       }
 
       #radius-shape-1 {
@@ -65,6 +67,7 @@
       .bg-glass {
         background-color: hsla(0, 0%, 100%, 0.9) !important;
         backdrop-filter: saturate(200%) blur(25px);
+        height: 567px;
       }
     </style>
 
@@ -72,14 +75,11 @@
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
           <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-            The best offer <br />
-            <span style="color: hsl(218, 81%, 75%)">for your business</span>
+            Log In  has   <br />
+            <span style="color: hsl(218, 81%, 75%)">never been easy as this</span>
           </h1>
           <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Temporibus, expedita iusto veniam atque, magni tempora mollitia
-            dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-            ab ipsum nisi dolorem modi. Quos?
+            There's Only One Thing In The World I Want And That Is Online. 
           </p>
         </div>
 
@@ -89,13 +89,13 @@
 
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form method="post" action="/users/register">
+              <form method="post" action="/logIn">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" name="user_nickname" />
-                      <label class="form-label" for="form3Example1">Nickname</label>
+                      <input type="text" id="form3Example1" class="form-control" name="user_nickname" placeholder="user nickname"  required/>
+                      <label class="form-label" for="form3Example1">User nickname</label>
                     </div>
                   </div>
 
@@ -103,28 +103,16 @@
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" name="user_email"/>
+                  <input type="email" id="form3Example3" class="form-control" name="user_email" placeholder="e-mail" required/>
                   <label class="form-label" for="form3Example3">Email address</label>
                 </div>
 
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control"name="user_password" />
-                  <label class="form-label" for="form3Example4">Password</label>
-                </div>
-
-                <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-center mb-4">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-                  <label class="form-check-label" for="form2Example33">
-                    Subscribe to our newsletter
-                  </label>
-                </div>
-
+              
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4" id="signUp">
-                  Sign up
+                  Log In
                 </button>
+
 
                 <!-- Register buttons -->
                 <div class="text-center">
@@ -153,6 +141,7 @@
     </div>
   </section>
   <!-- Section: Design Block -->
+
 
 </body>
 
