@@ -90,23 +90,18 @@
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
               <form method="post" action="/users/login">
-                <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" name="user_nickname" placeholder="user nickname"  required/>
-                      <label class="form-label" for="form3Example1">User nickname</label>
-                    </div>
-                  </div>
-
-                </div>
+               
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input type="email" id="form3Example3" class="form-control" name="user_email" placeholder="e-mail" required/>
                   <label class="form-label" for="form3Example3">Email address</label>
                 </div>
-
+                 <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="password" id="form3Example4" name="user_password" class="form-control" />
+                <label class="form-label" for="form3Example4">Password</label>
+              </div>
               
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4" id="signUp">
