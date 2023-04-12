@@ -1,7 +1,7 @@
 const { db_handler } = require("../../database/config/mysql.conf");
 
 
-module.exports.register = (req, res) => {
+module.exports.signup = (req, res) => {
 
     const { user_nickname, user_email, user_password } = req.body;
 

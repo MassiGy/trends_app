@@ -10,7 +10,7 @@ module.exports.addPost = (req, res) => {
 
     db_handler.query(sql, (err) => {
 
-        if (err) return res.send("Error payload is set to: %s.", err.message);
+        if (err) return res.send("Error payload is set to: "+ err.message);
         // if (err) return res.status(500).send("Tracking error: " + err.message)
         res.send("OK.");
     });

@@ -3,10 +3,10 @@ const { db_handler } = require("../../database/config/mysql.conf");
 
 module.exports.viewPost = (req, res) => {
 
-    const { post_title } = req.body;
+    const { post_id } = req.params;
 
     let sql =
-        `SELECT * FROM POST WHERE post_title = '${post_title}';`;
+        `SELECT * FROM POST WHERE post_id = ${post_id};`;
 
     db_handler.query(sql, (err, results) => {
 
