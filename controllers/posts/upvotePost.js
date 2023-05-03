@@ -10,7 +10,7 @@ module.exports.upvotePost = (req, res) => {
     let sql = `DELETE FROM DOWNVOTE WHERE post_id = ${post_id} AND user_id = ${active_user_id};`;
 
     db_handler.query(sql, (err) => {
-        if (err) return res.send("Error payload is set to: %s.\n", err.message);
+        if (err) return res.send("Error payload is set to: "+ err.message);
     })
 
 
@@ -20,13 +20,13 @@ module.exports.upvotePost = (req, res) => {
 
 
     db_handler.query(sql, (err) => {
-        console.log(err);
+        
         if (err) return res.send("Denied. You can not upvote the same post more then once.");
 
         sql = `UPDATE POST SET post_votes = post_votes + 1 WHERE post_id = ${post_id};`;
 
         db_handler.query(sql, (err) => {
-            if (err) return res.send("Error payload is set to: %s.\n", err.message);
+            if (err) return res.send("Error payload is set to: "+ err.message);
             res.send("OK.");
         })
     })

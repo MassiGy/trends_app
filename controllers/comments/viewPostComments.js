@@ -12,11 +12,11 @@ module.exports.viewPostComments = (req, res) => {
 
     db_handler.query(sql, (err, results) => {
 
-        if (err) return res.send("Error payload is set to: %s.\n", err.message);
+        if (err) return res.send("Error payload is set to: " + err.message);
 
         if (!results || results.length < 1) return res.send("No comments  was found with the given data.");
 
-       res.render('postComments',{results});
+        return res.json(results);
     })
 }
 

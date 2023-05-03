@@ -12,11 +12,7 @@ module.exports.showProfile =  (req, res) => {
 
 
     db_handler.query(sql, (err, results) => {
-        if (err) {
-            console.log("Error payload is set to : %s\n", err.message);
-            return;
-        }
-
+        if (err) res.send("Error payload is set to : "+ err.message);
         return res.json(results);
     });
 }

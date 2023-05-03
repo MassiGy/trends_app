@@ -26,7 +26,7 @@ module.exports.signout = (req, res) => {
 
 
         db_handler.query(sql, (err) => {
-            if (err) return res.send("Error payload is set to : %s\n", err.message);
+            if (err) return res.send("Error payload is set to : "+ err.message);
             return res.send("OK.");
         })
 

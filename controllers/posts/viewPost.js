@@ -10,7 +10,7 @@ module.exports.viewPost = (req, res) => {
 
     db_handler.query(sql, (err, results) => {
 
-        if (err) return res.send("Error payload is set to: %s.\n", err.message);
+        if (err) return res.send("Error payload is set to: "+ err.message);
 
         if (!results || results.length != 1) return res.send("No post was found with the given data.");
 

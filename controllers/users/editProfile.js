@@ -17,8 +17,7 @@ module.exports.editProfile =  (req, res) => {
 
     db_handler.query(sql, (err) => {
         if (err) {
-            console.log("Error payload is set to : %s\n", err.message);
-            return;
+            return res.send("Error payload is set to : "+ err.message);
         }
 
         return res.send("OK.");

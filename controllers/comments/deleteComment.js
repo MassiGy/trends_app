@@ -10,15 +10,16 @@ module.exports.deleteComment= (req, res) => {
 
     db_handler.query(sql, (err, results) => {
         if (err)  return res.send("Error payload is set to: %s.\n", err.message);
-        if (!results || results.length!=1) return  res.send("Error payload is set to: %s.\n", "No Comment was found wtih given data");
-        if (results[0].author_id != active_user_id) return  res.send("Error payload is set to: %s.\n", "No authorised to proceed");
+      
+        if (!results || results.length!=1) return  res.send("Error payload is set to: No Comment was found wtih given data");
+        if (results[0].author_id != active_user_id) return  res.send("Error payload is set to: No authorised to proceed");
 
         sql=`DELETE FROM COMMENT WHERE comment_id=${comment_id};`;
    
        
 
         db_handler.query(sql, (err) => {
-            if (err) return res.send("Error payload is set to: %s.\n", err.message);
+            if (err) return res.send("Error payload is set to: "+ err.message);
             return res.send("OK.");
         })
     })

@@ -11,7 +11,7 @@ module.exports.editPost = (req, res) => {
 
     db_handler.query(sql, (err,results) => {
 
-        if (err) return res.send("Error payload is set to: %s.\n", err.message);
+        if (err) return res.send("Error payload is set to: "+ err.message);
         
         if (!results || results.length != 1) return res.send("No post was found with the given data.");
 
@@ -20,7 +20,7 @@ module.exports.editPost = (req, res) => {
         sql = `UPDATE POST SET post_title='${new_post_title}',post_body='${new_post_body}' WHERE post_id = ${post_id};`;
         
         db_handler.query(sql,(err)=>{
-            if(err) return res.send("Error payload is set to: %s.\n", err.message);
+            if(err) return res.send("Error payload is set to: "+ err.message);
             return res.send("OK.");
         });
     })

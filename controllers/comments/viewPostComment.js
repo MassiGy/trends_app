@@ -10,8 +10,8 @@ module.exports.viewComment = (req, res) => {
 
     db_handler.query(sql, (err,results) => {
 
-        if (err) return res.send("Error payload is set to: %s.\n", err.message);
-        if(!results || results.length!=1) return  res.send("Error payload is set to: %s.\n", "No comment was found with that given data. ");
+        if (err) return res.send("Error payload is set to: "+ err.message);
+        if(!results || results.length!=1) return  res.send("Error payload is set to: No comment was found with that given data. ");
 
         res.json(results);
     })

@@ -6,8 +6,7 @@ module.exports.signup = (req, res) => {
     const { user_nickname, user_email, user_password } = req.body;
     
     if (!user_nickname.length || !user_email.length || !user_password.length){
-        req.flash("error","Credentials can not be blank.");
-        return res.redirect("/signUp");
+        return res.send("Credentials can not be blank."); 
     }
 
     let sql = `
@@ -18,11 +17,9 @@ module.exports.signup = (req, res) => {
 
     db_handler.query(sql, (err) => {
         if (err) {
-            console.log("Error payload is set to : %s\n", err.message);
-            res.redirect("/");
+            return res.send("Error payload is set to : "+ err.message);
         }
 
-        req.flash("success", "Successfuly signed up.");
-        return res.redirect("/home");
+        return res.send("Successfuly signed up.");
     });
 }
