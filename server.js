@@ -3,7 +3,9 @@ const express = require("express");
 const app = express();
 const path = require('path');
 const sessions = require("express-session");
-const flash = require("connect-flash");
+// Importing file-store module
+const filestore = require("session-file-store")(sessions);
+
 
 const dotenv = require("dotenv");
 
@@ -38,32 +40,14 @@ const sessionOption = {
     name: String(process.env.SESSION_NAME),
     secret: String(process.env.SESSION_SECRET),
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new filestore(),
+    cookie: {
+        maxAge: 5 * 24 * 60 * 60 * 1000, //  max_age = 3 days
+    }
 }
 
 app.use(sessions(sessionOption));
-
-
-/** LAUNCH THE FLASH MIDDLEWARE */
-app.use(flash());
-
-
-
-/** SETUP SOME CUSTOM MIDDLEWARES */
-app.use((req, res, next) => {
-
-    res.locals.flashMessages = {
-        success: req.flash("success"),
-        error: req.flash("error")
-    }
-
-    console.log('flashMessages :>> ', res.locals.flashMessages);
-    console.log('res.locals :>> ', res.locals);
-
-
-    next();
-})
-
 
 
 

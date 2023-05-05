@@ -7,8 +7,10 @@ module.exports.sanitize = (req, res, next) => {
     });
     
     Object.keys(req.params).forEach(key => {
-        if(req.body[String(key)] instanceof String)
+        if(req.params[String(key)] instanceof String)
             req.params[String(key)] = req.params[String(key)].replace(/['`";\$%\*]/g, "_");
     });
+   
+
     next();
 }
