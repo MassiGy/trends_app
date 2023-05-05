@@ -3,14 +3,15 @@ const { db_handler } = require("../../database/config/mysql.conf");
 
 module.exports.deletePost = (req, res) => {
 
-    const { post_title, active_user_id } = req.body;
+    const { post_title } = req.body;
+    const active_user_id = req.session.active_user_id;
 
     let sql =
         `SELECT * FROM POST WHERE post_title = '${post_title}';`;
 
     db_handler.query(sql, (err, results) => {
 
-        if (err) return res.send("Error payload is set to: "+err.message);
+        if (err) return res.send("Error payload is set to: " + err.message);
 
         if (!results || results.length != 1) return res.send("No post was found with the given data.");
 
@@ -19,7 +20,7 @@ module.exports.deletePost = (req, res) => {
         sql = `DELETE FROM POST WHERE post_title= '${post_title}';`;
 
         db_handler.query(sql, (err) => {
-            if (err) return res.send("Error payload is set to: "+err.message);
+            if (err) return res.send("Error payload is set to: " + err.message);
             return res.send("OK.");
         })
     })

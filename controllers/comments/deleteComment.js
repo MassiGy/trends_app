@@ -1,25 +1,25 @@
 const { db_handler } = require("../../database/config/mysql.conf");
 
 
-module.exports.deleteComment= (req, res) => {
+module.exports.deleteComment = (req, res) => {
 
-    const { active_user_id } = req.body;
-    const {comment_id}=req.params;
+    const active_user_id = req.session.active_user_id;
+    const { comment_id } = req.params;
 
     let sql = `SELECT * FROM COMMENT WHERE comment_id=${comment_id};`;
 
     db_handler.query(sql, (err, results) => {
-        if (err)  return res.send("Error payload is set to: %s.\n", err.message);
-      
-        if (!results || results.length!=1) return  res.send("Error payload is set to: No Comment was found wtih given data");
-        if (results[0].author_id != active_user_id) return  res.send("Error payload is set to: No authorised to proceed");
+        if (err) return res.send("Error payload is set to: %s.\n", err.message);
 
-        sql=`DELETE FROM COMMENT WHERE comment_id=${comment_id};`;
-   
-       
+        if (!results || results.length != 1) return res.send("Error payload is set to: No Comment was found wtih given data");
+        if (results[0].author_id != active_user_id) return res.send("Error payload is set to: No authorised to proceed");
+
+        sql = `DELETE FROM COMMENT WHERE comment_id=${comment_id};`;
+
+
 
         db_handler.query(sql, (err) => {
-            if (err) return res.send("Error payload is set to: "+ err.message);
+            if (err) return res.send("Error payload is set to: " + err.message);
             return res.send("OK.");
         })
     })

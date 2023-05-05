@@ -3,8 +3,10 @@ const { db_handler } = require("../../database/config/mysql.conf");
 
 module.exports.addComment = (req, res) => {
 
-    const { comment_text, author_id } = req.body;
+    const { comment_text } = req.body;
     const { post_id } = req.params;
+
+    let author_id= req.session.active_user_id;
 
     let sql =
         `INSERT INTO COMMENT (comment_text, post_id,author_id) VALUES ('${comment_text}', '${post_id}', '${author_id}');`;

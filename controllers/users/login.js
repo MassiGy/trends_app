@@ -16,7 +16,7 @@ module.exports.login = (req, res) => {
     }
 
     let sql = `
-        SELECT user_password
+        SELECT *
         FROM USER
         WHERE user_email = '${user_email}' ;`;
 
@@ -36,9 +36,13 @@ module.exports.login = (req, res) => {
             return res.send("Email or Password incorrect.");
         }
 
+        let user_id = result[0].user_id;
 
-        // set the session.active_user_email to the type user_email
+
+        // create session for the current user &send back a cookie 
         req.session.active_user_email = user_email;
+        req.session.active_user_id = user_id ;
+
 
         return res.send("Successfuly logged in.");
     });

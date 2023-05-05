@@ -4,7 +4,9 @@ const { db_handler } = require("../../database/config/mysql.conf");
 module.exports.addPost = (req, res) => {
 
 
-    const { post_title, post_body, author_id } = req.body;
+    const { post_title, post_body } = req.body;
+
+    let author_id = req.session.active_user_id;
 
     let sql =`INSERT INTO POST (post_title, post_body, author_id) VALUES ('${post_title}', '${post_body}', '${author_id}');`;
 

@@ -4,7 +4,7 @@ const { db_handler } = require("../../database/config/mysql.conf");
 module.exports.downvotePost = (req, res) => {
 
     const { post_id } = req.params;
-    const { active_user_id } = req.body;
+    const active_user_id = req.session.active_user_id;
 
     // remove the downvoting track record from the DOWNVOTE Table
     let sql = `DELETE FROM UPVOTE WHERE post_id = ${post_id} AND user_id = ${active_user_id};`;
