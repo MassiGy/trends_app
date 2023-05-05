@@ -1149,3 +1149,21 @@ body { padding-top:30px; }
 #signUp{
     margin-left: 170px;
 }
+
+.action{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+   
+}
+.action form {
+    width: 5px;
+    height:5px;
+    padding-bottom: 30px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background-color:white;
+    border: #FFF;
+
+}
+

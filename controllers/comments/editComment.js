@@ -9,8 +9,14 @@ module.exports.editComment = (req, res) => {
     let sql = `UPDATE COMMENT SET comment_text = '${new_comment_text}' 
                WHERE comment_id = ${comment_id} AND author_id = ${active_user_id} ;`;
 
+
+   
     db_handler.query(sql, (err) => {      
         if (err) return res.send("Error payload is set to: %s.\n", err.message);
-        return res.send("OK.");
+
+        req.flash("success", "Comment successfuly edited.");
+        return res.redirect("/home");
+        // return res.send("OK.");
+
     })
 }

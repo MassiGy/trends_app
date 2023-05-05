@@ -19,7 +19,6 @@ module.exports.renderHome = (req, res) => {
 
         if (!results || results.length < 1) return res.send("No trends found at this moment, come back later.");
 
-
         res.render('home', { results });
 
     });
